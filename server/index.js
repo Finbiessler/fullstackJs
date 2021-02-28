@@ -2,17 +2,20 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
 import postRoutes from './routes/posts.js';
 
+// Create backend app
 const app = express();
 
+//Register routes 
 app.use('/posts', postRoutes);
 
 app.use(bodyParser.json({limit : "30mb", extended: "true"}));
 app.use(bodyParser.urlencoded({limit : "30mb", extended: "true"}));
 app.use(cors());
 
+
+// Set up database connection 
 const CONNECTION_URL = 'mongodb+srv://finbiess:yBUet5MO,123@cluster0.o8cez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000
 
